@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="{CHARSET}">
+		<title></title>
+		
+		<script type="text/javascript" src="js/jquery-1.8.3.min.js">
+		</script>
+		<script type="text/javascript">
+			$(function(){
+				var oc=$('#c1');
+				
+				var oGC=oc[0].getContext('2d');
+				
+				oc.mousedown(function(ev){
+					var ev=ev||window.event;
+					
+					oGC.moveTo(ev.clientX-oc.offset().left,ev.clientY-oc.offset().top);
+					
+					$(document).mousemove(function(ev){
+						var ev=ev||window.event;
+						oGC.lineTo(ev.clientX-oc.offset().left,ev.clientY-oc.offset().top);
+						oGC.stroke();
+						
+					})
+					$(document).mouseup(function(){
+						$(document).mousemove().off();
+						$(document).mouseup().off();
+					})
+					
+					
+					
+				})
+				
+				
+			
+			})
+		</script>
+	</head>
+	<body>
+		<canvas id="c1" width="400" height="400"></canvas>
+	</body>
+</html>
